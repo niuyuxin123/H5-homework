@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单作业</title>
+    <style>
+    span{
+        color: red;
+    }
+    legend{
+        color:red;
+    }
+    fieldset{
+        width:500px;
+    }
+    </style>
+</head>
+<body>
+    <h1>毕业生信息</h1>
+    <form id="form1">
+        <fieldset>
+            <legend>学生信息</legend>
+            姓 名 <input type="text" name="name" placeholder="请输入姓名" required autofocus="autofocus"/><span> *</span>
+            <br/>
+            学 号 <input type="number" name="number" placeholder="请输入学号" required/><span> *</span>
+            <br/>
+            手 机 <input type="tel" name="tel" placeholder="请输入手机号" required/><span> *</span>
+            <br/>
+            邮 箱 <input type="email" name="email" placeholder="请输入邮箱地址" required/><span> *</span>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <legend>录取情况</legend>
+            录取学校<input type="search" name="school" autocomplete="on" list="schools" />
+            <datalist id="schools">
+                <option> </option>
+                <option>河北师范大学</option>
+            </datalist>
+            <br/>
+            入学成绩<input type="number" name="number1" min="0" />
+            <br/>
+            入学时间<input type="date" name="date" />
+        </fieldset>
+        <br/>
+        <input type="submit" name="submit" value="提交" />
+    </form>
+</body>
+</html>
