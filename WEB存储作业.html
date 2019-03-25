@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>存储作业</title>
+    <style>
+        form{
+            width:370px;
+            height:45px;
+           
+        }
+        #search1{
+            width:200px;
+            height:40px;
+        }
+        .sousuo{
+            width:150px;
+            height:35px;
+            color:gray;
+
+        }
+        #lishi{
+            width:350px;
+
+        }
+        .node{
+            background-color:rgba(128, 128, 128, 0.384);
+            color:black;
+            float:left;
+        }
+        .biao{
+            width:370px;
+            height:25px;
+            float:left;
+        }
+        #x{
+            width:20px;
+            height:20px;
+            float:right;
+            background-color:gainsboro;
+            color: white;
+            text-align: center;
+
+        }
+        span{
+            width:100px;
+            float:left;
+        }
+        a{
+            margin-right:5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="search" name="search1" placeholder="请输入想查找的商品" autocomplete="on" id="search1" value=""/>
+        <input type="button" name="sousuo" value="搜索" class="sousuo" id="button"/>
+    </form>
+    <div class="biao">
+        <span>最近搜索</span>
+        <div id="x">
+            X
+        </div>
+        <br/>
+    </div>
+    <div id="lishi">
+    </div>
+</body>
+<script>
+    var search=document.getElementById("search1");
+    var button=document.getElementById("button");
+    var lishi=document.getElementById("lishi");
+    var body=document.getElementsByTagName("body");
+    var x=document.getElementById("x");
+    function clearChild(){
+        var elements=document.getElementsByClassName("node");
+        for(var i=elements.length-1;i>=0;i--){
+            elements[i].parentNode.removeChild(elements[i]);
+        }
+        // var x=document.getElementById("X");
+        // lishi.removeChild(x);
+    }
+    function storage(){
+        for(var i=localStorage.length-1;i>=0;i--){
+            var key=localStorage.key(i);
+            var value1=localStorage.getItem(key);
+            var node=document.createElement('a');
+            var text1=document.createTextNode(value1);
+            node.className="node";
+            node.appendChild(text1);
+            lishi.appendChild(node);
+
+        }
+        // var nodex=document.createElement('p');
+        // nodex.id="X";
+        // var text11=document.createTextNode("X");
+        // nodex.appendChild(text11);
+        // lishi.appendChild(nodex);
+
+    }
+    window.onload=storage();
+    button.onclick=function saveLoad(){
+        var data=search.value;
+        var time=new Date().getTime();
+        localStorage.setItem(time,data);
+        var j=localStorage.key(localStorage.length-1);
+        var new1=localStorage.getItem(j);
+        for(var i=0;i<localStorage.length-1;i++){
+            var key=localStorage.key(i);
+            var value1=localStorage.getItem(key);
+            if(new1==value1){
+                localStorage.removeItem(key);
+            }
+        }
+        clearChild();
+        storage();
+    }
+    x.onclick=function(){
+        localStorage.clear();
+        clearChild();
+        storage();
+    }
+</script>
+</html>
