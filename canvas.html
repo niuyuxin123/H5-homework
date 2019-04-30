@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        div{
+            z-index: 0;
+            float:left;
+            position: absolute;
+        }
+        canvas{
+            z-index: 1;
+            float:left;
+            position: absolute;
+            border:1px solid rgb(216, 216, 228);
+        }
+    </style>
+</head>
+<body>
+    <div id="a">
+    </div>
+    <canvas id="canvas" width="400" height="275">
+    </canvas>
+</body>
+<script>
+    window.onload=function(){
+        var a=document.getElementById('a');
+        var image=new Image();
+        image.src=Math.floor(3*(Math.random()))+".png";
+        image.width="400";
+        image.height="275";
+        a.appendChild(image);
+        
+    }
+    var elem=document.getElementById("canvas");
+    var context=elem.getContext("2d");
+    context.fillStyle="rgb(216, 216, 228)";
+    context.fillRect(0,0,400,275);
+    elem.onclick=function(ev){
+        var x=ev.clientX;
+        var y=ev.clientY;
+        context.globalCompositeOperation = "destination-out";
+        context.beginPath();
+        context.arc(x,y,40,0,Math.PI*2);
+        context.fill();
+        context.stroke();
+        judge();
+    }
+    elem.onmousedown=function(ev){
+        elem.onmousemove=function(ev){
+            var x=ev.clientX;
+            var y=ev.clientY;
+            context.globalCompositeOperation = "destination-out";
+            context.beginPath();
+            context.arc(x,y,40,0,Math.PI*2);
+            context.fill();
+            context.stroke();
+            judge();
+        }
+    }
+    elem.onmouseup=function(ev){
+        elem.onmousemove=function(ev){
+            
+        }
+    }
+    function judge(){
+        var imagedata=context.getImageData(0,0,400,275);
+        data=imagedata.data;
+        var j=0;
+        for(var i=3;i<data.length;i=i+4){
+            if(data[i]==0){
+                j++;
+            }
+        }
+        if(j/(data.length/4)>0.85){
+            context.fillRect(0,0,400,275);
+        }
+    }
+</script>
+</html>
