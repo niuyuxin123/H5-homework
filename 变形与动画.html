@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css变形与动画</title>
+    <style>
+        .big{
+            width:400px;
+            height:450px;
+            border: 5px solid gainsboro;
+            position: relative;
+            overflow: hidden;
+            box-shadow:0 0 5px black;
+        }
+        .imgs{
+            width:400px;
+            height:250px;
+            background-size:cover;
+            background-image: url(zhanqiao.jpg);
+            overflow: hidden;
+            transform: scale(1,1);
+            transition: transform 0.5s ease-in-out;
+        }
+        .shadow{
+            width:400px;
+            height:250px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .date{
+            right:25px;
+            top:25px;
+            width:50px;
+            height:50px;
+            border-radius:25px;
+            background:rgba(243, 111, 3, 0.925);
+            color: white;
+            font-size:15px;
+            font-weight: bolder;
+            text-align: center;
+            position: absolute;
+            z-index: 9;
+        }
+        .word{
+            width:400px;
+            height:150px;
+            position: relative;
+            background:white;
+            float: left;
+            transform:translateY(0);
+            transition: transform 0.5s ease-in-out;
+        }
+        .big:hover .imgs{
+            transform: scale(1.2,1.2);
+            transition: transform 0.5s ease-in-out;
+
+        }
+        .big:hover .word{
+            transform:translateY(-100px);
+            transition: transform 0.5s ease-in-out;
+        }
+        .big:hover .word2{
+            opacity:1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .big:hover .shadow{
+            background: rgb(0, 0, 0,0.4);
+        }
+        .icon{
+            width:50px;
+            height: 25px;
+            line-height: 25px;
+            position:absolute;
+            background:rgba(243, 111, 3, 0.925);
+            color: white;
+            left:0;
+            top:-25px;
+            text-align: center;
+        }
+        .word h2{
+            margin-left:25px;
+        }
+        .word span{
+            margin-left:25px;
+            font-size:17px;
+            color: coral;
+            
+        }
+        .word2{
+            margin-left:25px;
+            opacity:0;
+            font-size:15px;
+            color:gray;
+        }
+        .bottoms{
+            width:400px;
+            height:50px;
+            font-size:12px;
+            color: rgb(199, 197, 197);
+        }
+        .bottoms a{
+            margin-left:30px;
+            text-align: center;
+            line-height: 50px;
+        }
+        @keyframes bdcolor{
+            0%{
+                border-color:gainsboro;
+            }
+            100%{
+                border-color: rgb(165, 163, 163);
+            }
+        }
+        .big:hover{
+            animation-name: bdcolor;
+            animation-duration:1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="date">
+            <a>15</a>
+            <br/>
+            <a>5月</a>
+        </div>
+        <div class="imgs">
+        </div>
+        <div class="shadow"></div>
+        <div class="word">
+            <div class="icon">照片</div>
+            <h2>青岛栈桥</h2>
+            <span>国家AAAA级旅游景区</span>
+            <br/>
+            <div class="word2">
+                <a>青岛栈桥是青岛海滨风景区的景点之一，是国
+                    务院于1982年首批公布的国家级风景名胜区。
+                    青岛栈桥位于游人如织的青岛中山路南端，桥
+                    身从海岸探入如弯月般的青岛湾深处。桥身供
+                    游人参观并在此停靠旅游船，由此乘船可看海
+                    上青岛。</a>
+            </div>
+        </div>
+        <div class="bottoms">
+            <a>10分钟前</a>
+            <a>123评论</a>
+        </div>
+    </div>
+</body>
+<script>
+</script>
+</html>
