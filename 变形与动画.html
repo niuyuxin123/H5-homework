@@ -114,9 +114,23 @@
                 border-color: rgb(165, 163, 163);
             }
         }
+        @keyframes bdcolor1{
+            0%{
+                border-color: rgb(165, 163, 163);
+            }
+            100%{
+                border-color:gainsboro;
+            }
+        }
         .big:hover{
             animation-name: bdcolor;
             animation-duration:1s;
+            animation-fill-mode: forwards;
+        }
+        .big{
+            animation-name: bdcolor1;
+            animation-duration:1s;
+            animation-fill-mode: forwards;
         }
     </style>
 </head>
