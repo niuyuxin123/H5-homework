@@ -738,8 +738,31 @@
                 padding:0%;
                 /* padding-right:5px; */
             }
+            .btua{
+                display: none;
+            }
         }
         @media(max-width:768px){
+            .btua{
+                height:50px;
+                width:20%;
+                background:#e8420a;
+                border-radius:10px;
+                border:1px solid #e8420a;
+                margin-top:13px;
+                /* margin-left:10px; */
+                position: absolute;
+                right:20%;
+                color:#fff;
+                text-align: center;
+                line-height:50px;
+                font-size:16px;
+            }
+            .navbar-toggle{
+                margin-top:20px;
+                width:10%;
+                text-align: center;
+            }
             .zc{
                 display: none;
             }
@@ -1533,6 +1556,9 @@
                     <a class="navbar-brand" href="#" style="height:80px;">
                         <img src="img/logo.png"/>
                     </a>
+                    <button type="button" class="btua">
+                        <p>快速定制</p>
+                    </button>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#yhyy">
                         <span class="sr-only">切换导航开关</span>
                         <span class="icon-bar"></span>
